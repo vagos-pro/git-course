@@ -2,3 +2,4 @@ errors.txt
 /templates/main/assets/images
 /templates/main/assets/stylesheets
 /templates/main/assets/javascripts
+!/templates/main/assets/javascripts/script.js
