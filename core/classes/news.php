@@ -21,4 +21,11 @@ class news
         }
         return $news;
     }
+    public static function getAllCount()
+    {
+        $query = "SELECT count(*) FROM news";
+        $result = mysqli_query(db::getInstance(), $query);
+        $count = mysqli_fetch_array($result);
+        return (int)$count[0];
+    }
 }

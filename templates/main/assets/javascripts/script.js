@@ -1,6 +1,5 @@
 $(function () {
     let offset = 3;
-    /* Используйте вариант $('#more').click(function() для того, чтобы дать пользователю возможность управлять процессом, кликая по кнопке "Дальше" под блоком статей (см. файл index.php) */
     $('#btn').click(function() {
         if (offset < allNewsCount) {
             $.ajax({
@@ -12,16 +11,17 @@ $(function () {
                 data: {"offset": offset},
                 /* что нужно сделать по факту выполнения запроса */
 
-            }).done(function (data) {
+            }).done(function(data) {
                 /* Если массив не пуст (т.е. статьи там есть) */
                 if (data.length > 0) {
                     $('#ajax-content').append(data);
                     // Увеличиваем на 3 порядковый номер статьи, с которой надо начинать выборку из базы
                     offset += 3;
+                    if (offset >= allNewsCount) {
+                        $('#btn').hide();
+                    }
                 }
             });
-        } else {
-            $('#btn').hide();
         }
     });
 });
