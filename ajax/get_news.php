@@ -1,11 +1,12 @@
 <?php
 require_once "../core/start.php";
 $newsAjax = news::getData($_POST['offset']);
-echo '<ul class="unstyled row-fluid">';
-foreach ($newsAjax as $item) {
-    $phpdate = strtotime($item['date']);
-    $dt = date("d M Y", $phpdate);
-    echo <<<NEWS
+if (!empty($newsAjax)) {
+    echo '<ul class="unstyled row-fluid">';
+    foreach ($newsAjax as $item) {
+        $phpdate = strtotime($item['date']);
+        $dt = date("d M Y", $phpdate);
+        echo <<<NEWS
                 <li class="span4">
                     <div class="row-fluid">
                         <div class="span4">
@@ -31,5 +32,6 @@ foreach ($newsAjax as $item) {
                     </div>
                 </li>
 NEWS;
+    }
+    echo '<ul/>';
 }
-echo '<ul/>';

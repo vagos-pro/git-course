@@ -53,6 +53,7 @@ SERVICE;
 <?php
 echo '<ul class="unstyled row-fluid">';
                 $news = news::getData();
+
                 foreach ($news as $item) {
                     $phpdate = strtotime($item['date']);
                     $dt = date("d M Y", $phpdate);
@@ -85,6 +86,10 @@ NEWS;
 }
 echo '</ul>';
 ?>
+                <?$allCount = news::getAllCount();?>
+                <script>
+                    var allNewsCount = <?=$allCount?>;
+                </script>
           </div>
           <div class="text-center">
             <button class="btn btn-link" id="btn">Загрузить еще...</button>
